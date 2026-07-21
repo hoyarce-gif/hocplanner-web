@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102A43" />
+  <title>HOC Planner — Planificación y Control de Proyectos</title>
+  <meta name="description" content="Consultoría y apps a medida para planificación y control de proyectos de construcción. Digitalización, IA y Business Intelligence." />
+  <link rel="icon" href="https://hocplannerapp.netlify.app/logo.png" />
+  <link rel="apple-touch-icon" href="https://hocplannerapp.netlify.app/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['Inter','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Helvetica','Arial','sans-serif'] },
+      colors: {
+        brand: {50:'#F0F4F8',100:'#D9E2EC',200:'#BCCCDC',300:'#9FB3C8',400:'#829AB1',500:'#627D98',600:'#486581',700:'#334E68',800:'#243B53',900:'#102A43'},
+        gray:  {50:'#FBFBFD',100:'#F5F5F7',200:'#E8E8ED',300:'#D2D2D7',400:'#86868B',500:'#6E6E73',600:'#424245',700:'#1D1D1F',800:'#121212',900:'#000000'}
+      }
+    }}}
+  </script>
+  <style>
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{background:#F5F5F7;font-family:Inter,sans-serif}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .fade{animation:fadeIn .8s cubic-bezier(.16,1,.3,1) both}
+  </style>
+</head>
+<body class="text-gray-900">
+
+  <!-- NAVBAR -->
+  <nav id="nav" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="#hero" class="flex items-center gap-2 group">
+          <img src="https://hocplannerapp.netlify.app/logo.png" alt="HOC Planner" class="h-9 w-9 object-contain">
+          <span class="text-xl font-bold text-gray-900 tracking-tight">HOC PLANNER</span>
+        </a>
+        <div class="hidden md:flex space-x-9 items-center">
+          <a href="#hero" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Inicio</a>
+          <a href="#products" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Servicios</a>
+          <a href="#blog" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Blog</a>
+          <a href="#contact" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Contacto</a>
+          <a href="#contact" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Asesoría</a>
+          <a href="https://hocplannerapp.netlify.app" target="_blank" rel="noopener" class="bg-brand-700 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-800 transition-all shadow-sm">Acceso clientes</a>
+        </div>
+        <button id="mbtn" class="md:hidden p-2 text-gray-600" aria-label="Menú">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mmenu" class="md:hidden hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1">
+      <a href="#hero" class="block py-4 text-xl font-bold text-gray-900 border-b border-gray-100">Inicio</a>
+      <a href="#products" class="block py-4 text-xl font-bold text-gray-900 border-b border-gray-100">Servicios</a>
+      <a href="#blog" class="block py-4 text-xl font-bold text-gray-900 border-b border-gray-100">Blog</a>
+      <a href="#contact" class="block py-4 text-xl font-bold text-gray-900 border-b border-gray-100">Contacto</a>
+      <a href="https://hocplannerapp.netlify.app" target="_blank" rel="noopener" class="mt-4 block text-center py-4 text-lg font-semibold text-white bg-brand-700 rounded-full">Acceso clientes</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero" class="relative bg-white pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden">
+    <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-brand-50 rounded-full blur-3xl opacity-50"></div>
+    <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-gray-100 rounded-full blur-3xl opacity-50"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="text-center max-w-5xl mx-auto">
+        <div class="flex justify-center items-center gap-2 mb-8 fade">
+          <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 uppercase tracking-wider">Inteligencia Artificial</span>
+          <span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 uppercase tracking-wider">Apps Móviles</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight mb-8 leading-tight fade">
+          Control Digital y <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">Aplicaciones Personalizadas</span>
+        </h1>
+        <p class="mt-6 text-xl text-gray-500 font-light leading-relaxed px-4 max-w-3xl mx-auto fade">
+          Democratizamos el acceso a la tecnología. Desarrollamos <strong>Apps a medida</strong> con IA y Business Intelligence para el control de procesos en terreno a bajo costo.
+          <span class="text-gray-400 text-lg block mt-4">"No buscamos cambiar la forma en que los profesionales piensan y ejecutan, sino convertirnos en un asesor clave para reducir las brechas entre lo planificado y lo ejecutado en terreno."</span>
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 fade">
+          <a href="#products" class="px-8 py-4 rounded-xl bg-gray-900 text-white text-base font-medium hover:bg-brand-700 transition-all shadow-xl hover:-translate-y-1">Conocer Apps & Servicios</a>
+          <a href="#contact" class="px-8 py-4 text-base font-medium text-gray-600 hover:text-brand-700 transition-colors">Solicitar Demo →</a>
+        </div>
+      </div>
+      <div class="mt-24 pt-10 border-t border-gray-100 grid grid-cols-2 md:grid-cols-4 gap-8 fade">
+        <div class="text-center"><p class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">581</p><p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-medium">Proyectos Planificados</p></div>
+        <div class="text-center"><p class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">+1000</p><p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-medium">Programas Realizados</p></div>
+        <div class="text-center"><p class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">905</p><p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-medium">Profesionales Asesorados</p></div>
+        <div class="text-center"><p class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">+100</p><p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-medium">Impactos Contractuales</p></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICIOS -->
+  <section id="products" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-14">
+        <p class="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">Servicios</p>
+        <h2 class="text-4xl font-bold text-gray-900 tracking-tight">De la planificación al control, con datos en tiempo real</h2>
+      </div>
+      <div id="servgrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-14">
+        <p class="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">Blog</p>
+        <h2 class="text-4xl font-bold text-gray-900 tracking-tight">Ideas sobre planificación, control y tecnología</h2>
+      </div>
+      <div id="bloggrid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contact" class="bg-gray-50 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+        <div class="bg-gray-900 p-10 lg:p-16 text-white flex flex-col justify-between">
+          <div>
+            <h3 class="text-3xl font-semibold tracking-tight">Contacto</h3>
+            <p class="mt-4 text-gray-400 leading-relaxed">¿Tienes alguna duda o propuesta? Rellena el formulario y te responderemos lo antes posible.</p>
+          </div>
+          <div class="mt-12 space-y-6">
+            <div><p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</p><p class="mt-1 text-lg">contacto@hocplanner.cl</p></div>
+            <div><p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Ubicación</p><p class="mt-1 text-lg">Santiago, Chile</p></div>
+          </div>
+        </div>
+        <div class="p-10 lg:p-16">
+          <div id="cok" class="hidden h-full flex-col items-center justify-center text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"><svg width="30" height="30" fill="none" stroke="#16a34a" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <h3 class="text-2xl font-bold text-gray-900">¡Mensaje enviado!</h3><p class="text-gray-500 mt-2">Gracias por contactarnos.</p>
+          </div>
+          <form id="cform" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+            <input type="hidden" name="form-name" value="contacto">
+            <p class="hidden"><label>No llenar: <input name="bot-field"></label></p>
+            <div><label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label><input type="text" name="name" required class="block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-brand-500" placeholder="Tu nombre"></div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-1">Email</label><input type="email" name="email" required class="block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-brand-500" placeholder="nombre@ejemplo.com"></div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label><textarea name="message" rows="4" required class="block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-brand-500 resize-none" placeholder="¿Cómo podemos ayudarte?"></textarea></div>
+            <button type="submit" id="cbtn" class="w-full py-4 px-6 rounded-xl text-base font-medium text-white bg-gray-900 hover:bg-gray-800 transition-all">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-200 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-2"><img src="https://hocplannerapp.netlify.app/logo.png" class="h-8 w-8 object-contain" alt=""><span class="text-xl font-bold text-gray-900">HOC Planner</span></div>
+          <p class="mt-4 text-gray-500 text-sm leading-relaxed max-w-xs">Especialistas en planificación y control de proyectos mediante ingeniería, procesos y digitalización avanzada. Desde Santiago, Chile.</p>
+          <div class="flex space-x-5 mt-6">
+            <a href="https://www.instagram.com/hocplanner/" target="_blank" rel="noopener" class="text-gray-400 hover:text-brand-600">Instagram</a>
+            <a href="https://www.linkedin.com/company/hocplanner/" target="_blank" rel="noopener" class="text-gray-400 hover:text-brand-600">LinkedIn</a>
+          </div>
+        </div>
+        <div class="md:col-span-2 md:col-start-8"><h3 class="text-sm font-semibold text-gray-900 uppercase mb-4">Sitio</h3><ul class="space-y-3 text-sm text-gray-500">
+          <li><a href="#hero" class="hover:text-brand-500">Inicio</a></li><li><a href="#products" class="hover:text-brand-500">Servicios</a></li><li><a href="#blog" class="hover:text-brand-500">Blog</a></li><li><a href="#contact" class="hover:text-brand-500">Contacto</a></li></ul></div>
+        <div class="md:col-span-3"><h3 class="text-sm font-semibold text-gray-900 uppercase mb-4">Acceso</h3>
+          <a href="https://hocplannerapp.netlify.app" target="_blank" rel="noopener" class="inline-block bg-brand-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-800">Acceso clientes →</a></div>
+      </div>
+      <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-xs text-gray-400">&copy; <span id="yr"></span> HOC PLANNER. Todos los derechos reservados.</p>
+        <p class="text-xs text-gray-400 mt-4 md:mt-0">Diseñado en Santiago</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scrolled + mobile
+    var nav=document.getElementById('nav');
+    addEventListener('scroll',function(){ nav.className='fixed w-full z-50 transition-all duration-300 '+(scrollY>20?'bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200/50':'bg-transparent'); });
+    var mm=document.getElementById('mmenu');
+    document.getElementById('mbtn').onclick=function(){ mm.classList.toggle('hidden'); };
+    mm.querySelectorAll('a').forEach(function(a){ a.onclick=function(){ mm.classList.add('hidden'); }; });
+    document.getElementById('yr').textContent=new Date().getFullYear();
+
+    // Servicios
+    var SERV=[
+      {n:'Digitalización de Procesos',d:'Apps móviles a medida para el control en terreno, con IA y Business Intelligence para decisiones con datos en tiempo real.',f:['Apps Personalizadas','Cloud','IA & BI','Control Offline']},
+      {n:'Planificación Estratégica',d:'Planteamiento logístico (layout), análisis de procesos constructivos y definición de rendimientos esperados.',f:['Análisis Logístico','Layout de Obra','Plan de Riesgos']},
+      {n:'Programación Manual de Obra',d:'Carta Gantt detallada por módulos de avance, con hitos críticos y lógica de ejecución.',f:['Carta Gantt','Módulos de Avance','Hitos Críticos']},
+      {n:'Gestión y Control de Obra',d:'Medición del avance real vs programado, ruta crítica y proyecciones dinámicas de término.',f:['Control de Avance','Ruta Crítica','Alertas de Desviación']},
+      {n:'Gestión de Reclamos e Impactos',d:'Cuantificación de impactos por restricciones ajenas al contrato, con soporte técnico para resguardar resultados.',f:['Cuantificación','Soporte Técnico','Gestión de Seguros']}
+    ];
+    document.getElementById('servgrid').innerHTML=SERV.map(function(s){
+      return '<div class="bg-white rounded-2xl border border-gray-100 p-8 hover:shadow-lg transition-all hover:-translate-y-1">'+
+        '<h3 class="text-lg font-bold text-gray-900 mb-3">'+s.n+'</h3>'+
+        '<p class="text-sm text-gray-500 leading-relaxed mb-5">'+s.d+'</p>'+
+        '<div class="flex flex-wrap gap-2">'+s.f.map(function(x){return '<span class="text-xs bg-brand-50 text-brand-700 px-2.5 py-1 rounded-full">'+x+'</span>';}).join('')+'</div></div>';
+    }).join('');
+
+    // Blog
+    var POSTS=[
+      {t:'Transformación Digital en Obra',c:'Tecnología e Innovación',e:'Cómo las apps móviles y la IA democratizan el control de proyectos a bajo costo, con decisiones en tiempo real.',d:'15 Oct, 2023'},
+      {t:'La importancia de la Ruta Crítica',c:'Gestión Técnica',e:'Por qué monitorear las tareas críticas es vital para evitar desviaciones irreparables en el plazo.',d:'10 Oct, 2023'},
+      {t:'Brechas entre Planificación y Ejecución',c:'Opinión Experta',e:'Causas comunes por las que lo planificado en oficina no se cumple en terreno, y cómo mitigarlas.',d:'25 Sep, 2023'}
+    ];
+    document.getElementById('bloggrid').innerHTML=POSTS.map(function(p){
+      return '<article class="rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all"><div class="h-40 bg-gradient-to-br from-brand-800 to-brand-500"></div>'+
+        '<div class="p-6"><p class="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2">'+p.c+'</p>'+
+        '<h3 class="text-lg font-bold text-gray-900 mb-2">'+p.t+'</h3><p class="text-sm text-gray-500 leading-relaxed mb-4">'+p.e+'</p>'+
+        '<p class="text-xs text-gray-400">'+p.d+'</p></div></article>';
+    }).join('');
+
+    // Contacto (Netlify Forms)
+    var f=document.getElementById('cform');
+    f.addEventListener('submit',function(e){
+      e.preventDefault(); var btn=document.getElementById('cbtn'); btn.disabled=true; btn.textContent='Enviando…';
+      var fd=new FormData(f), body=new URLSearchParams(fd).toString();
+      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+        .then(function(r){ if(!r.ok) throw 0; f.style.display='none'; var ok=document.getElementById('cok'); ok.classList.remove('hidden'); ok.classList.add('flex'); })
+        .catch(function(){ alert('Hubo un error al enviar. Intenta nuevamente.'); btn.disabled=false; btn.textContent='Enviar mensaje'; });
+    });
+  </script>
+</body>
+</html>
