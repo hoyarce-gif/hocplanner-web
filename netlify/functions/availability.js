@@ -144,11 +144,14 @@ exports.handler = async (event) => {
   }
 
   // Try to query Google Calendar
+  // Calendar IDs: env vars override these defaults
+  // Note: CALENDAR_1 and CALENDAR_2 point to hoyarce@hocplanner.cl (same account,
+  //        same calendar — user should update CALENDAR_2_ID with the separate work calendar when available)
   const SA_JSON = process.env.GOOGLE_SERVICE_ACCOUNT_JSON
   const calIds = [
-    process.env.CALENDAR_1_ID,
-    process.env.CALENDAR_2_ID,
-    process.env.CALENDAR_3_ID,
+    process.env.CALENDAR_1_ID || 'hoyarce@hocplanner.cl',
+    process.env.CALENDAR_2_ID || 'hoyarce@hocplanner.cl',
+    process.env.CALENDAR_3_ID || 'haoyarce@gmail.com',
   ].filter(Boolean)
 
   let busyPeriods = []

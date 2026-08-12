@@ -542,27 +542,43 @@
               <label class="block text-sm font-medium text-gray-700 mb-1.5">¿Sobre qué tema quieres asesorarte?</label>
               <textarea id="bf-topic" rows="3" placeholder="Describe brevemente el tema o proyecto que necesitas revisar…" class="block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-gray-900 text-sm resize-none"></textarea>
             </div>
+            <!-- Disclaimer -->
+            <div class="rounded-xl border border-amber-200 bg-amber-50 p-4 flex gap-3">
+              <svg class="shrink-0 mt-0.5" width="16" height="16" fill="none" stroke="#d97706" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r="0.5" fill="#d97706"/></svg>
+              <p class="text-sm text-amber-800 leading-snug"><strong>Pago previo obligatorio:</strong> La cita quedará confirmada en el calendario únicamente una vez que el pago sea acreditado. Al enviar este formulario recibirás por email los datos de transferencia bancaria con el monto a pagar.</p>
+            </div>
             <!-- Summary + CTA -->
             <div class="bg-white border border-gray-200 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Total a pagar</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Valor consultoría</p>
                 <p class="text-2xl font-bold text-gray-900" id="book-price">$50.000 CLP</p>
-                <p class="text-xs text-gray-400 mt-0.5">1 hora · Lun–Vie · Ambiente de prueba</p>
+                <p class="text-xs text-gray-400 mt-0.5">1 hora · Pago vía transferencia bancaria</p>
               </div>
               <button type="submit" id="book-submit" class="shrink-0 px-8 py-3.5 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-brand-900 transition-all flex items-center gap-2">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                Reservar y Pagar
+                Solicitar reserva
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
             <div id="book-error" class="hidden text-sm text-red-600 text-center"></div>
           </form>
         </div>
 
-        <!-- ── Redirecting to Webpay ── -->
+        <!-- ── Sending ── -->
         <div id="book-redirecting" class="hidden flex-col items-center justify-center py-12 text-center">
           <svg class="animate-spin mb-4" width="40" height="40" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#d08c12" stroke-width="3" stroke-dasharray="50" stroke-linecap="round"/></svg>
-          <p class="text-gray-700 font-medium">Redirigiendo a Webpay…</p>
-          <p class="text-sm text-gray-400 mt-1">Serás redirigido al portal de pago seguro.</p>
+          <p class="text-gray-700 font-medium">Enviando solicitud…</p>
+          <p class="text-sm text-gray-400 mt-1">Espera un momento.</p>
+        </div>
+
+        <!-- ── Success ── -->
+        <div id="book-success" class="hidden flex-col items-center justify-center py-8 text-center">
+          <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-5">
+            <svg width="28" height="28" fill="none" stroke="#16a34a" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">¡Solicitud enviada!</h3>
+          <p class="text-gray-500 text-sm max-w-sm mb-1" id="book-success-date"></p>
+          <p class="text-gray-500 text-sm max-w-sm mb-6">Revisa tu email — te enviaremos los datos de transferencia bancaria en breve. <strong class="text-gray-700">Tu cita quedará confirmada una vez acreditado el pago.</strong></p>
+          <button id="book-reset" class="px-6 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">Agendar otra cita</button>
         </div>
 
       </div><!-- /widget card -->
@@ -634,6 +650,9 @@
     mm.querySelectorAll('a').forEach(function(a){ a.onclick=function(){ mm.classList.add('hidden'); }; });
     document.getElementById('yr').textContent=new Date().getFullYear();
 
+    // Apps Script endpoint (compartido con contacto y booking)
+    var FORM_URL='https://script.google.com/macros/s/AKfycbwf3tezcwQ9K-vlQ63a0767sUbS7FF0Ju1miIrGhBLU7Q0jPUR87hQ4AS8bp3F03aDBCw/exec';
+
     // ══════════════════════════════════════════════════════════════
     // BOOKING WIDGET
     // ══════════════════════════════════════════════════════════════
@@ -655,6 +674,7 @@
       var s2 = document.getElementById('book-s2');
       var s3 = document.getElementById('book-s3');
       var sR = document.getElementById('book-redirecting');
+      var sS = document.getElementById('book-success');
 
       function showStep(n) {
         s1.classList.toggle('hidden', n !== 1);
@@ -662,6 +682,10 @@
         s3.classList.toggle('hidden', n !== 3);
         sR.classList.toggle('hidden', n !== 4);
         sR.classList.toggle('flex', n === 4);
+        sS.classList.toggle('hidden', n !== 5);
+        sS.classList.toggle('flex', n === 5);
+        // Hide step indicators on success
+        document.getElementById('book-steps').classList.toggle('hidden', n === 5);
         // Update step indicators
         document.querySelectorAll('.step-dot').forEach(function(dot) {
           var ds = parseInt(dot.dataset.step);
@@ -830,7 +854,7 @@
         loadSlots(state.selectedDate);
       });
 
-      // ── Form submit → Webpay ──
+      // ── Form submit → Apps Script (derivar al formulario de contacto) ──
       document.getElementById('book-form').addEventListener('submit', function(e) {
         e.preventDefault();
         var name  = document.getElementById('bf-name').value.trim();
@@ -847,29 +871,43 @@
 
         var submitBtn = document.getElementById('book-submit');
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Procesando…';
+        submitBtn.textContent = 'Enviando…';
         showStep(4);
 
-        fetch('/api/book', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ date: state.selectedDate, slot: state.selectedSlot, name: name, email: email, topic: topic })
-        })
+        var d = new Date(state.selectedDate + 'T12:00:00');
+        var fechaLegible = DAYS_ES[d.getDay()] + ' ' + d.getDate() + ' de ' + MONTHS_ES[d.getMonth()] + ' de ' + state.year + ', ' + state.selectedSlot + ' hrs';
+
+        var body = new URLSearchParams({
+          name:    name,
+          email:   email,
+          message: '[SOLICITUD DE CONSULTORÍA]\nFecha: ' + fechaLegible + '\nTema: ' + (topic || 'No especificado') + '\n\nPor confirmar — pendiente de pago vía transferencia.'
+        }).toString();
+
+        fetch(FORM_URL, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
           .then(function(r) { return r.json(); })
-          .then(function(data) {
-            if (data.redirectUrl) {
-              window.location.href = data.redirectUrl;
-            } else {
-              throw new Error(data.error || 'Error desconocido');
-            }
+          .then(function(j) {
+            if (!j.ok) throw new Error('Apps Script error');
+            document.getElementById('book-success-date').textContent = fechaLegible;
+            showStep(5);
           })
-          .catch(function(err) {
+          .catch(function() {
             showStep(3);
             submitBtn.disabled = false;
-            submitBtn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Reservar y Pagar';
-            errEl.textContent = 'Error al iniciar el pago. Por favor intenta nuevamente.';
+            submitBtn.innerHTML = 'Solicitar reserva <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+            errEl.textContent = 'Hubo un error al enviar. Escríbenos directamente a contacto@hocplanner.cl.';
             errEl.classList.remove('hidden');
           });
+      });
+
+      // Reset widget
+      document.getElementById('book-reset').addEventListener('click', function() {
+        document.getElementById('bf-name').value = '';
+        document.getElementById('bf-email').value = '';
+        document.getElementById('bf-topic').value = '';
+        state.selectedDate = '';
+        state.selectedSlot = '';
+        renderCalendar();
+        showStep(1);
       });
 
       // Init
@@ -877,8 +915,7 @@
       showStep(1);
     })();
 
-    // Contacto → Web App de Apps Script
-    var FORM_URL='https://script.google.com/macros/s/AKfycbwf3tezcwQ9K-vlQ63a0767sUbS7FF0Ju1miIrGhBLU7Q0jPUR87hQ4AS8bp3F03aDBCw/exec';
+    // Contacto → Web App de Apps Script (usa FORM_URL declarado arriba)
     var f=document.getElementById('cform');
     f.addEventListener('submit',function(e){
       e.preventDefault(); var btn=document.getElementById('cbtn'); btn.disabled=true; btn.textContent='Enviando…';
