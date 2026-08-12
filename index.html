@@ -24,6 +24,8 @@
     body{background:#F5F5F7;font-family:Inter,sans-serif}
     @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
     .fade{animation:fadeIn .8s cubic-bezier(.16,1,.3,1) both}
+    .feat-card{border-radius:28px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+    .feat-card:hover{transform:scale(1.015);box-shadow:0 40px 80px rgba(0,0,0,.22)}
   </style>
 </head>
 <body class="text-gray-900">
@@ -72,47 +74,375 @@
         </h1>
         <p class="mt-6 text-xl text-gray-500 font-light leading-relaxed px-4 max-w-3xl mx-auto fade">
           Democratizamos el acceso a la tecnología. Desarrollamos <strong>Apps a medida</strong> con IA y Business Intelligence para el control de procesos en terreno a bajo costo.
-          <span class="text-gray-400 text-lg block mt-4">"No buscamos cambiar la forma en que los profesionales piensan y ejecutan, sino convertirnos en un asesor clave para reducir las brechas entre lo planificado y lo ejecutado en terreno."</span>
         </p>
         <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 fade">
-          <a href="#products" class="px-8 py-4 rounded-xl bg-gray-900 text-white text-base font-medium hover:bg-brand-700 transition-all shadow-xl hover:-translate-y-1">Conocer Apps & Servicios</a>
+          <a href="#products" class="px-8 py-4 rounded-xl bg-gray-900 text-white text-base font-medium hover:bg-brand-700 transition-all shadow-xl hover:-translate-y-1">Conocer Apps &amp; Servicios</a>
           <a href="#contact" class="px-8 py-4 text-base font-medium text-gray-600 hover:text-brand-700 transition-colors">Solicitar Demo →</a>
         </div>
       </div>
-      <!-- ESTADÍSTICAS ocultas a pedido (2026-07-25) — restaurar quitando este comentario
-      <div class="mt-24 pt-10 border-t border-gray-100 grid grid-cols-2 md:grid-cols-4 gap-8 fade">
-        <div class="text-center"><p class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">581</p><p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-medium">Proyectos Planificados</p></div>
-        <div class="text-center"><p class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">+1000</p><p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-medium">Programas Realizados</p></div>
-        <div class="text-center"><p class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">905</p><p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-medium">Profesionales Asesorados</p></div>
-        <div class="text-center"><p class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">+100</p><p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-medium">Impactos Contractuales</p></div>
-      </div>
-      -->
-
     </div>
   </header>
 
-  <!-- SERVICIOS -->
-  <section id="products" class="py-24 bg-gray-50">
+  <!-- ═══════════════════════════════════════════════════
+       SERVICIOS — Apple-style bento grid
+       ═══════════════════════════════════════════════════ -->
+  <section id="products" class="py-28" style="background:#111114">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mb-14">
-        <p class="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">Servicios</p>
-        <h2 class="text-4xl font-bold text-gray-900 tracking-tight">De la planificación al control, con datos en tiempo real</h2>
-      </div>
-      <div id="servgrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </div>
-  </section>
 
-  <!-- BLOG oculto a pedido (2026-07-25) — restaurar quitando este comentario
-  <section id="blog" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mb-14">
-        <p class="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">Blog</p>
-        <h2 class="text-4xl font-bold text-gray-900 tracking-tight">Ideas sobre planificación, control y tecnología</h2>
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#d08c12">Servicios</p>
+        <h2 class="text-5xl md:text-6xl font-bold text-white tracking-tight leading-tight">De la planificación al control.</h2>
+        <p class="mt-4 text-xl font-light" style="color:#86868b">Con datos en tiempo real.</p>
       </div>
-      <div id="bloggrid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+
+      <!-- ── BENTO GRID ── -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- ┌──────────────────────────────────────────────┐
+             │  CARD 1: Digitalización  (full-width)        │
+             └──────────────────────────────────────────────┘ -->
+        <div class="feat-card md:col-span-2 flex flex-col lg:flex-row items-stretch" style="background:linear-gradient(135deg,#102A43 0%,#1a3d5c 60%,#0d2238 100%)">
+
+          <!-- Visual: phone mockup -->
+          <div class="flex-1 flex items-center justify-center p-10 lg:p-16 lg:min-h-0 min-h-72">
+            <svg viewBox="0 0 224 432" width="180" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 24px 48px rgba(0,0,0,.5))">
+              <!-- Body -->
+              <rect x="10" y="6" width="204" height="420" rx="32" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+              <!-- Screen -->
+              <rect x="18" y="16" width="188" height="400" rx="24" fill="#071824"/>
+              <!-- Notch -->
+              <rect x="72" y="16" width="80" height="22" rx="11" fill="#071824"/>
+              <!-- Status row -->
+              <text x="28" y="50" fill="rgba(255,255,255,0.5)" font-size="9" font-family="sans-serif">9:41</text>
+              <rect x="178" y="42" width="20" height="10" rx="3" fill="rgba(255,255,255,0.2)"/>
+              <rect x="178" y="42" width="14" height="10" rx="3" fill="#1a7f45"/>
+              <!-- App header -->
+              <rect x="18" y="58" width="188" height="48" fill="rgba(16,42,67,0.9)"/>
+              <circle cx="44" cy="82" r="12" fill="rgba(208,140,18,0.25)"/>
+              <text x="44" y="86" fill="#d08c12" font-size="10" text-anchor="middle" font-family="sans-serif" font-weight="700">HP</text>
+              <text x="66" y="79" fill="white" font-size="12" font-family="sans-serif" font-weight="700">Control de Proyecto</text>
+              <text x="66" y="93" fill="rgba(255,255,255,0.4)" font-size="8" font-family="sans-serif">Torre A · Piso 12</text>
+              <!-- Main progress card -->
+              <rect x="26" y="118" width="172" height="62" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <text x="38" y="136" fill="rgba(255,255,255,0.45)" font-size="8.5" font-family="sans-serif">Avance General</text>
+              <text x="38" y="160" fill="#d08c12" font-size="26" font-family="sans-serif" font-weight="700">72%</text>
+              <rect x="100" y="148" width="88" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+              <rect x="100" y="148" width="64" height="6" rx="3" fill="#d08c12"/>
+              <text x="100" y="168" fill="rgba(255,255,255,0.35)" font-size="7.5" font-family="sans-serif">Meta: 78% esta semana</text>
+              <!-- KPI mini row -->
+              <rect x="26" y="190" width="80" height="56" rx="10" fill="rgba(26,127,69,0.14)" stroke="rgba(26,127,69,0.28)" stroke-width="1"/>
+              <text x="66" y="214" fill="#1a7f45" font-size="20" text-anchor="middle" font-family="sans-serif" font-weight="700">48</text>
+              <text x="66" y="232" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle" font-family="sans-serif">Completadas</text>
+              <rect x="118" y="190" width="80" height="56" rx="10" fill="rgba(192,86,78,0.14)" stroke="rgba(192,86,78,0.28)" stroke-width="1"/>
+              <text x="158" y="214" fill="#c0564e" font-size="20" text-anchor="middle" font-family="sans-serif" font-weight="700">5</text>
+              <text x="158" y="232" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle" font-family="sans-serif">Alertas</text>
+              <!-- Section label -->
+              <text x="38" y="264" fill="rgba(255,255,255,0.3)" font-size="7.5" font-family="sans-serif" font-weight="600" letter-spacing="0.8">TAREAS CRÍTICAS</text>
+              <!-- Task rows -->
+              <rect x="26" y="272" width="172" height="38" rx="8" fill="rgba(255,255,255,0.04)"/>
+              <circle cx="42" cy="291" r="5" fill="#1a7f45"/>
+              <rect x="54" y="286" width="95" height="5" rx="2.5" fill="rgba(255,255,255,0.18)"/>
+              <rect x="54" y="296" width="65" height="4" rx="2" fill="rgba(255,255,255,0.07)"/>
+              <text x="186" y="294" fill="#1a7f45" font-size="8" text-anchor="middle" font-family="sans-serif" font-weight="600">✓</text>
+
+              <rect x="26" y="314" width="172" height="38" rx="8" fill="rgba(255,255,255,0.04)"/>
+              <circle cx="42" cy="333" r="5" fill="#d08c12"/>
+              <rect x="54" y="328" width="80" height="5" rx="2.5" fill="rgba(255,255,255,0.18)"/>
+              <rect x="54" y="338" width="55" height="4" rx="2" fill="rgba(255,255,255,0.07)"/>
+              <text x="186" y="336" fill="#d08c12" font-size="9" text-anchor="middle" font-family="sans-serif">–</text>
+
+              <rect x="26" y="356" width="172" height="38" rx="8" fill="rgba(255,255,255,0.04)"/>
+              <circle cx="42" cy="375" r="5" fill="#c0564e"/>
+              <rect x="54" y="370" width="88" height="5" rx="2.5" fill="rgba(255,255,255,0.18)"/>
+              <rect x="54" y="380" width="48" height="4" rx="2" fill="rgba(255,255,255,0.07)"/>
+              <text x="186" y="378" fill="#c0564e" font-size="9" text-anchor="middle" font-family="sans-serif" font-weight="700">!</text>
+              <!-- Bottom bar -->
+              <rect x="18" y="400" width="188" height="16" rx="0" fill="rgba(5,14,22,0.95)"/>
+              <rect x="18" y="408" width="188" height="8" rx="12" fill="rgba(5,14,22,0.95)"/>
+              <rect x="77" y="411" width="70" height="4" rx="2" fill="rgba(255,255,255,0.18)"/>
+            </svg>
+          </div>
+
+          <!-- Text area -->
+          <div class="flex-1 flex flex-col justify-center p-10 lg:p-14 lg:pr-16">
+            <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#d08c12">Apps a Medida · IA · BI</p>
+            <h3 class="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-5 leading-tight">Digitalización<br>de Procesos</h3>
+            <p class="text-base leading-relaxed mb-8" style="color:#a1a1a6">Apps móviles a medida para el control en terreno. Decisiones más rápidas con datos en tiempo real, inteligencia artificial y Business Intelligence integrados.</p>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background:rgba(208,140,18,0.15);color:#d08c12;border:1px solid rgba(208,140,18,0.3)">Apps Personalizadas</span>
+              <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)">Cloud</span>
+              <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)">IA &amp; BI</span>
+              <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)">Control Offline</span>
+            </div>
+            <a href="#contact" class="inline-flex items-center gap-2 text-sm font-medium transition-colors" style="color:rgba(255,255,255,0.55)" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">
+              Solicitar demo
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ┌──────────────────┐
+             │  CARD 2          │
+             │  Planificación   │
+             │  (claro)         │
+             └──────────────────┘ -->
+        <div class="feat-card flex flex-col" style="background:#f5f5f7;min-height:420px">
+          <!-- Visual: Blueprint / layout de obra -->
+          <div class="flex-1 flex items-center justify-center p-8" style="background:linear-gradient(150deg,#dce6f0,#e8eef5)">
+            <svg viewBox="0 0 270 200" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:300px">
+              <defs>
+                <pattern id="g1" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+                  <path d="M18 0L0 0 0 18" fill="none" stroke="rgba(72,101,129,0.14)" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="270" height="200" fill="url(#g1)"/>
+              <!-- Torre principal -->
+              <rect x="15" y="15" width="88" height="108" rx="5" fill="rgba(16,42,67,0.1)" stroke="#334E68" stroke-width="2"/>
+              <rect x="15" y="15" width="88" height="26" rx="5" fill="#334E68"/>
+              <text x="59" y="33" fill="white" font-size="9.5" text-anchor="middle" font-family="sans-serif" font-weight="700">TORRE A</text>
+              <text x="59" y="82" fill="#334E68" font-size="11" text-anchor="middle" font-family="sans-serif" font-weight="700">24 pisos</text>
+              <text x="59" y="96" fill="#627D98" font-size="8" text-anchor="middle" font-family="sans-serif">18.400 m²</text>
+              <!-- Bloque B -->
+              <rect x="118" y="15" width="72" height="72" rx="5" fill="rgba(208,140,18,0.1)" stroke="#d08c12" stroke-width="1.5"/>
+              <text x="154" y="55" fill="#b5730f" font-size="9" text-anchor="middle" font-family="sans-serif" font-weight="700">BLOQUE B</text>
+              <text x="154" y="70" fill="#b5730f" font-size="7.5" text-anchor="middle" font-family="sans-serif">8 pisos</text>
+              <!-- Acceso -->
+              <rect x="204" y="15" width="52" height="72" rx="5" fill="rgba(98,125,152,0.08)" stroke="#9FB3C8" stroke-width="1.2" stroke-dasharray="4,3"/>
+              <text x="230" y="54" fill="#829AB1" font-size="8" text-anchor="middle" font-family="sans-serif">ACCESO</text>
+              <text x="230" y="66" fill="#829AB1" font-size="7" text-anchor="middle" font-family="sans-serif">+ LOBBY</text>
+              <!-- Estacionamiento -->
+              <rect x="118" y="102" width="138" height="58" rx="5" fill="rgba(98,125,152,0.07)" stroke="#829AB1" stroke-width="1.2" stroke-dasharray="4,3"/>
+              <text x="187" y="134" fill="#627D98" font-size="8.5" text-anchor="middle" font-family="sans-serif">ESTACIONAMIENTO</text>
+              <text x="187" y="147" fill="#9FB3C8" font-size="7.5" text-anchor="middle" font-family="sans-serif">120 plazas</text>
+              <!-- Área verde -->
+              <rect x="15" y="136" width="88" height="42" rx="5" fill="rgba(26,127,69,0.1)" stroke="#1a7f45" stroke-width="1.2"/>
+              <text x="59" y="160" fill="#1a7f45" font-size="8.5" text-anchor="middle" font-family="sans-serif">ÁREA VERDE</text>
+              <text x="59" y="172" fill="#1a7f45" font-size="7.5" text-anchor="middle" font-family="sans-serif">1.200 m²</text>
+              <!-- Cota horizontal -->
+              <line x1="15" y1="188" x2="255" y2="188" stroke="#334E68" stroke-width="1"/>
+              <line x1="15" y1="185" x2="15" y2="191" stroke="#334E68" stroke-width="1"/>
+              <line x1="255" y1="185" x2="255" y2="191" stroke="#334E68" stroke-width="1"/>
+              <text x="135" y="198" fill="#627D98" font-size="7.5" text-anchor="middle" font-family="sans-serif">80.0 m</text>
+            </svg>
+          </div>
+          <!-- Text -->
+          <div class="p-8 pt-7">
+            <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Consultoría</p>
+            <h3 class="text-2xl font-bold text-gray-900 tracking-tight mb-3 leading-tight">Planificación<br>Estratégica</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Layout de obra, análisis de procesos constructivos y definición de rendimientos esperados para proyectos de alta complejidad.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="text-xs bg-brand-50 text-brand-700 px-2.5 py-1 rounded-full font-medium">Análisis Logístico</span>
+              <span class="text-xs bg-brand-50 text-brand-700 px-2.5 py-1 rounded-full font-medium">Layout de Obra</span>
+              <span class="text-xs bg-brand-50 text-brand-700 px-2.5 py-1 rounded-full font-medium">Plan de Riesgos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ┌──────────────────┐
+             │  CARD 3          │
+             │  Programación    │
+             │  Gantt (oscuro)  │
+             └──────────────────┘ -->
+        <div class="feat-card flex flex-col" style="background:#1d1d1f;min-height:420px">
+          <!-- Visual: Carta Gantt -->
+          <div class="flex-1 flex items-center justify-center p-8">
+            <svg viewBox="0 0 290 210" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:320px">
+              <!-- Vertical grid lines -->
+              <line x1="108" y1="22" x2="108" y2="188" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="144" y1="22" x2="144" y2="188" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="180" y1="22" x2="180" y2="188" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="216" y1="22" x2="216" y2="188" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="252" y1="22" x2="252" y2="188" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <!-- Month labels -->
+              <text x="126" y="16" fill="rgba(255,255,255,0.3)" font-size="7.5" text-anchor="middle" font-family="sans-serif">ENE</text>
+              <text x="162" y="16" fill="rgba(255,255,255,0.3)" font-size="7.5" text-anchor="middle" font-family="sans-serif">FEB</text>
+              <text x="198" y="16" fill="rgba(255,255,255,0.3)" font-size="7.5" text-anchor="middle" font-family="sans-serif">MAR</text>
+              <text x="234" y="16" fill="rgba(255,255,255,0.3)" font-size="7.5" text-anchor="middle" font-family="sans-serif">ABR</text>
+              <!-- Row 1: Fundaciones -->
+              <text x="104" y="40" fill="rgba(255,255,255,0.55)" font-size="8.5" text-anchor="end" font-family="sans-serif">Fundaciones</text>
+              <rect x="108" y="30" width="144" height="13" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <rect x="108" y="30" width="108" height="13" rx="3" fill="#334E68"/>
+              <rect x="108" y="30" width="76" height="13" rx="3" fill="#d08c12"/>
+              <!-- Row 2: Estructura -->
+              <text x="104" y="62" fill="rgba(255,255,255,0.55)" font-size="8.5" text-anchor="end" font-family="sans-serif">Estructura</text>
+              <rect x="108" y="52" width="144" height="13" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <rect x="133" y="52" width="119" height="13" rx="3" fill="#486581"/>
+              <rect x="133" y="52" width="80" height="13" rx="3" fill="#d08c12"/>
+              <!-- Row 3: Terminaciones -->
+              <text x="104" y="84" fill="rgba(255,255,255,0.55)" font-size="8.5" text-anchor="end" font-family="sans-serif">Terminaciones</text>
+              <rect x="108" y="74" width="144" height="13" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <rect x="180" y="74" width="72" height="13" rx="3" fill="#627D98"/>
+              <rect x="180" y="74" width="38" height="13" rx="3" fill="#d08c12"/>
+              <!-- Row 4: Instalaciones -->
+              <text x="104" y="106" fill="rgba(255,255,255,0.55)" font-size="8.5" text-anchor="end" font-family="sans-serif">Instalaciones</text>
+              <rect x="108" y="96" width="144" height="13" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <rect x="162" y="96" width="90" height="13" rx="3" fill="#243B53"/>
+              <rect x="162" y="96" width="50" height="13" rx="3" fill="#d08c12"/>
+              <!-- Row 5: Exteriores -->
+              <text x="104" y="128" fill="rgba(255,255,255,0.55)" font-size="8.5" text-anchor="end" font-family="sans-serif">Exteriores</text>
+              <rect x="108" y="118" width="144" height="13" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <rect x="207" y="118" width="45" height="13" rx="3" fill="#334E68"/>
+              <!-- Row 6: Entrega -->
+              <text x="104" y="150" fill="rgba(255,255,255,0.55)" font-size="8.5" text-anchor="end" font-family="sans-serif">Entrega</text>
+              <rect x="108" y="140" width="144" height="13" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <rect x="238" y="140" width="14" height="13" rx="3" fill="#1a7f45"/>
+              <!-- Hoy line -->
+              <line x1="196" y1="22" x2="196" y2="158" stroke="#c0564e" stroke-width="1.8" stroke-dasharray="4,3"/>
+              <rect x="188" y="18" width="26" height="12" rx="3" fill="#c0564e"/>
+              <text x="201" y="27" fill="white" font-size="7.5" text-anchor="middle" font-family="sans-serif" font-weight="700">HOY</text>
+              <!-- Legend -->
+              <rect x="108" y="170" width="10" height="8" rx="2" fill="#d08c12"/>
+              <text x="122" y="178" fill="rgba(255,255,255,0.45)" font-size="7.5" font-family="sans-serif">Real</text>
+              <rect x="148" y="170" width="10" height="8" rx="2" fill="#486581"/>
+              <text x="162" y="178" fill="rgba(255,255,255,0.45)" font-size="7.5" font-family="sans-serif">Planificado</text>
+              <line x1="208" y1="174" x2="220" y2="174" stroke="#c0564e" stroke-width="1.8" stroke-dasharray="3,2"/>
+              <text x="224" y="178" fill="rgba(255,255,255,0.45)" font-size="7.5" font-family="sans-serif">Hoy</text>
+            </svg>
+          </div>
+          <!-- Text -->
+          <div class="p-8 pt-0">
+            <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color:#d08c12">Ingeniería</p>
+            <h3 class="text-2xl font-bold text-white tracking-tight mb-3 leading-tight">Programación<br>de Obra</h3>
+            <p class="text-sm leading-relaxed" style="color:#86868b">Carta Gantt detallada por módulos de avance, con hitos críticos y lógica de ejecución coordinada por frentes de trabajo.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)">Carta Gantt</span>
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)">Módulos de Avance</span>
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)">Hitos Críticos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ┌──────────────────┐
+             │  CARD 4          │
+             │  Control Avance  │
+             │  (dark blue)     │
+             └──────────────────┘ -->
+        <div class="feat-card flex flex-col" style="background:linear-gradient(150deg,#0d2035,#162c47);min-height:420px">
+          <!-- Visual: Dashboard KPI + chart -->
+          <div class="flex-1 flex items-center justify-center p-8">
+            <svg viewBox="0 0 270 195" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:300px">
+              <!-- KPI tiles -->
+              <rect x="5" y="5" width="80" height="56" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+              <text x="45" y="27" fill="rgba(255,255,255,0.4)" font-size="8" text-anchor="middle" font-family="sans-serif">Avance Real</text>
+              <text x="45" y="51" fill="#d08c12" font-size="22" text-anchor="middle" font-family="sans-serif" font-weight="700">68%</text>
+
+              <rect x="96" y="5" width="80" height="56" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+              <text x="136" y="27" fill="rgba(255,255,255,0.4)" font-size="8" text-anchor="middle" font-family="sans-serif">Programado</text>
+              <text x="136" y="51" fill="rgba(255,255,255,0.8)" font-size="22" text-anchor="middle" font-family="sans-serif" font-weight="700">74%</text>
+
+              <rect x="187" y="5" width="80" height="56" rx="10" fill="rgba(192,86,78,0.14)" stroke="rgba(192,86,78,0.28)" stroke-width="1"/>
+              <text x="227" y="27" fill="rgba(192,86,78,0.7)" font-size="8" text-anchor="middle" font-family="sans-serif">Desviación</text>
+              <text x="227" y="51" fill="#c0564e" font-size="22" text-anchor="middle" font-family="sans-serif" font-weight="700">−6%</text>
+
+              <!-- Chart area -->
+              <rect x="5" y="72" width="262" height="100" rx="10" fill="rgba(255,255,255,0.04)"/>
+              <text x="16" y="90" fill="rgba(255,255,255,0.3)" font-size="7.5" font-family="sans-serif" font-weight="600">AVANCE SEMANAL</text>
+              <!-- Y-axis guide lines -->
+              <line x1="20" y1="100" x2="260" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="20" y1="117" x2="260" y2="117" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="20" y1="134" x2="260" y2="134" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="20" y1="151" x2="260" y2="151" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <!-- Planned line (dashed) -->
+              <polyline points="20,148 60,138 100,125 140,113 180,100 220,89 260,80" fill="none" stroke="rgba(104,128,156,0.55)" stroke-width="1.5" stroke-dasharray="4,3"/>
+              <!-- Real line -->
+              <polyline points="20,149 60,140 100,129 140,119 180,112 220,107" fill="none" stroke="#d08c12" stroke-width="2.2"/>
+              <!-- Area fill -->
+              <polygon points="20,151 20,149 60,140 100,129 140,119 180,112 220,107 220,151" fill="rgba(208,140,18,0.09)"/>
+              <!-- Dots -->
+              <circle cx="20" cy="149" r="3.5" fill="#d08c12"/>
+              <circle cx="60" cy="140" r="3.5" fill="#d08c12"/>
+              <circle cx="100" cy="129" r="3.5" fill="#d08c12"/>
+              <circle cx="140" cy="119" r="3.5" fill="#d08c12"/>
+              <circle cx="180" cy="112" r="3.5" fill="#d08c12"/>
+              <circle cx="220" cy="107" r="3.5" fill="#d08c12"/>
+              <!-- X labels -->
+              <text x="20" y="165" fill="rgba(255,255,255,0.25)" font-size="7" text-anchor="middle" font-family="sans-serif">S1</text>
+              <text x="60" y="165" fill="rgba(255,255,255,0.25)" font-size="7" text-anchor="middle" font-family="sans-serif">S2</text>
+              <text x="100" y="165" fill="rgba(255,255,255,0.25)" font-size="7" text-anchor="middle" font-family="sans-serif">S3</text>
+              <text x="140" y="165" fill="rgba(255,255,255,0.25)" font-size="7" text-anchor="middle" font-family="sans-serif">S4</text>
+              <text x="180" y="165" fill="rgba(255,255,255,0.25)" font-size="7" text-anchor="middle" font-family="sans-serif">S5</text>
+              <text x="220" y="165" fill="rgba(255,255,255,0.25)" font-size="7" text-anchor="middle" font-family="sans-serif">S6</text>
+            </svg>
+          </div>
+          <!-- Text -->
+          <div class="p-8 pt-0">
+            <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color:#d08c12">Control</p>
+            <h3 class="text-2xl font-bold text-white tracking-tight mb-3 leading-tight">Gestión y Control<br>de Avance</h3>
+            <p class="text-sm leading-relaxed" style="color:#86868b">Medición del avance real vs programado, ruta crítica y proyecciones dinámicas de término con alertas de desviación automáticas.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)">Control de Avance</span>
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)">Ruta Crítica</span>
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)">Alertas de Desviación</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ┌──────────────────┐
+             │  CARD 5          │
+             │  Reclamos (claro)│
+             └──────────────────┘ -->
+        <div class="feat-card flex flex-col" style="background:#f5f5f7;min-height:420px">
+          <!-- Visual: Informe de impactos -->
+          <div class="flex-1 flex items-center justify-center p-8" style="background:linear-gradient(150deg,#e4eaf0,#eef2f7)">
+            <svg viewBox="0 0 250 200" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:275px;filter:drop-shadow(0 12px 24px rgba(0,0,0,.1))">
+              <!-- Paper shadow -->
+              <rect x="33" y="19" width="184" height="172" rx="10" fill="rgba(0,0,0,0.06)"/>
+              <!-- Paper -->
+              <rect x="28" y="14" width="184" height="172" rx="10" fill="white" stroke="#d2d2d7" stroke-width="1"/>
+              <!-- Header band -->
+              <rect x="28" y="14" width="184" height="36" rx="10" fill="#102A43"/>
+              <rect x="28" y="38" width="184" height="12" fill="#102A43"/>
+              <text x="120" y="37" fill="white" font-size="9" text-anchor="middle" font-family="sans-serif" font-weight="700" letter-spacing="0.5">INFORME DE IMPACTOS</text>
+              <!-- Subtitle lines -->
+              <rect x="44" y="62" width="55" height="5" rx="2.5" fill="#d2d2d7"/>
+              <rect x="44" y="72" width="100" height="4" rx="2" fill="#e8e8ed"/>
+              <rect x="44" y="80" width="80" height="4" rx="2" fill="#e8e8ed"/>
+              <!-- Section label -->
+              <text x="44" y="100" fill="#627D98" font-size="7.5" font-family="sans-serif" font-weight="700" letter-spacing="0.3">CUANTIFICACIÓN POR CAUSA</text>
+              <!-- Bar chart -->
+              <!-- Row 1: Clima -->
+              <text x="44" y="117" fill="#6E6E73" font-size="7.5" font-family="sans-serif">Clima</text>
+              <rect x="84" y="108" width="100" height="10" rx="3" fill="#f0f4f8"/>
+              <rect x="84" y="108" width="100" height="10" rx="3" fill="#334E68"/>
+              <text x="190" y="117" fill="#334E68" font-size="7.5" font-family="sans-serif" font-weight="700">42d</text>
+              <!-- Row 2: Diseño -->
+              <text x="44" y="134" fill="#6E6E73" font-size="7.5" font-family="sans-serif">Diseño</text>
+              <rect x="84" y="125" width="100" height="10" rx="3" fill="#f0f4f8"/>
+              <rect x="84" y="125" width="68" height="10" rx="3" fill="#d08c12"/>
+              <text x="190" y="134" fill="#b5730f" font-size="7.5" font-family="sans-serif" font-weight="700">28d</text>
+              <!-- Row 3: Terceros -->
+              <text x="44" y="151" fill="#6E6E73" font-size="7.5" font-family="sans-serif">Terceros</text>
+              <rect x="84" y="142" width="100" height="10" rx="3" fill="#f0f4f8"/>
+              <rect x="84" y="142" width="43" height="10" rx="3" fill="#c0564e"/>
+              <text x="190" y="151" fill="#c0564e" font-size="7.5" font-family="sans-serif" font-weight="700">18d</text>
+              <!-- Total line -->
+              <line x1="84" y1="160" x2="195" y2="160" stroke="#d2d2d7" stroke-width="1"/>
+              <text x="44" y="174" fill="#1D1D1F" font-size="8.5" font-family="sans-serif" font-weight="700">Total Impacto</text>
+              <text x="190" y="174" fill="#102A43" font-size="10" font-family="sans-serif" font-weight="700">88d</text>
+              <!-- Stamp circle -->
+              <circle cx="172" cy="72" r="17" fill="none" stroke="#1a7f45" stroke-width="2"/>
+              <circle cx="172" cy="72" r="12.5" fill="none" stroke="#1a7f45" stroke-width="0.8" stroke-dasharray="2,2"/>
+              <text x="172" y="68" fill="#1a7f45" font-size="6" text-anchor="middle" font-family="sans-serif" font-weight="700">TÉCNICA</text>
+              <text x="172" y="78" fill="#1a7f45" font-size="6" text-anchor="middle" font-family="sans-serif" font-weight="700">VALIDADO</text>
+            </svg>
+          </div>
+          <!-- Text -->
+          <div class="p-8 pt-7">
+            <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Asesoría Técnica</p>
+            <h3 class="text-2xl font-bold text-gray-900 tracking-tight mb-3 leading-tight">Gestión de Reclamos<br>e Impactos</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Cuantificación técnica de impactos por restricciones ajenas al contrato, con soporte especializado para resguardar los resultados del proyecto.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="text-xs bg-brand-50 text-brand-700 px-2.5 py-1 rounded-full font-medium">Cuantificación</span>
+              <span class="text-xs bg-brand-50 text-brand-700 px-2.5 py-1 rounded-full font-medium">Soporte Técnico</span>
+              <span class="text-xs bg-brand-50 text-brand-700 px-2.5 py-1 rounded-full font-medium">Gestión de Seguros</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /bento grid -->
     </div>
   </section>
-  -->
 
   <!-- CONTACTO -->
   <section id="contact" class="bg-gray-50 py-24">
@@ -178,36 +508,7 @@
     mm.querySelectorAll('a').forEach(function(a){ a.onclick=function(){ mm.classList.add('hidden'); }; });
     document.getElementById('yr').textContent=new Date().getFullYear();
 
-    // Servicios
-    var SERV=[
-      {n:'Digitalización de Procesos',d:'Apps móviles a medida para el control en terreno, con IA y Business Intelligence para decisiones con datos en tiempo real.',f:['Apps Personalizadas','Cloud','IA & BI','Control Offline']},
-      {n:'Planificación Estratégica',d:'Planteamiento logístico (layout), análisis de procesos constructivos y definición de rendimientos esperados.',f:['Análisis Logístico','Layout de Obra','Plan de Riesgos']},
-      {n:'Programación Manual de Obra',d:'Carta Gantt detallada por módulos de avance, con hitos críticos y lógica de ejecución.',f:['Carta Gantt','Módulos de Avance','Hitos Críticos']},
-      {n:'Gestión y Control de Obra',d:'Medición del avance real vs programado, ruta crítica y proyecciones dinámicas de término.',f:['Control de Avance','Ruta Crítica','Alertas de Desviación']},
-      {n:'Gestión de Reclamos e Impactos',d:'Cuantificación de impactos por restricciones ajenas al contrato, con soporte técnico para resguardar resultados.',f:['Cuantificación','Soporte Técnico','Gestión de Seguros']}
-    ];
-    document.getElementById('servgrid').innerHTML=SERV.map(function(s){
-      return '<div class="bg-white rounded-2xl border border-gray-100 p-8 hover:shadow-lg transition-all hover:-translate-y-1">'+
-        '<h3 class="text-lg font-bold text-gray-900 mb-3">'+s.n+'</h3>'+
-        '<p class="text-sm text-gray-500 leading-relaxed mb-5">'+s.d+'</p>'+
-        '<div class="flex flex-wrap gap-2">'+s.f.map(function(x){return '<span class="text-xs bg-brand-50 text-brand-700 px-2.5 py-1 rounded-full">'+x+'</span>';}).join('')+'</div></div>';
-    }).join('');
-
-    // Blog oculto a pedido (2026-07-25) — el guard evita error si la sección no existe
-    var POSTS=[
-      {t:'Transformación Digital en Obra',c:'Tecnología e Innovación',e:'Cómo las apps móviles y la IA democratizan el control de proyectos a bajo costo, con decisiones en tiempo real.',d:'15 Oct, 2023'},
-      {t:'La importancia de la Ruta Crítica',c:'Gestión Técnica',e:'Por qué monitorear las tareas críticas es vital para evitar desviaciones irreparables en el plazo.',d:'10 Oct, 2023'},
-      {t:'Brechas entre Planificación y Ejecución',c:'Opinión Experta',e:'Causas comunes por las que lo planificado en oficina no se cumple en terreno, y cómo mitigarlas.',d:'25 Sep, 2023'}
-    ];
-    var bg=document.getElementById('bloggrid');
-    if(bg) bg.innerHTML=POSTS.map(function(p){
-      return '<article class="rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all"><div class="h-40 bg-gradient-to-br from-brand-800 to-brand-500"></div>'+
-        '<div class="p-6"><p class="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2">'+p.c+'</p>'+
-        '<h3 class="text-lg font-bold text-gray-900 mb-2">'+p.t+'</h3><p class="text-sm text-gray-500 leading-relaxed mb-4">'+p.e+'</p>'+
-        '<p class="text-xs text-gray-400">'+p.d+'</p></div></article>';
-    }).join('');
-
-    // Contacto → Web App de Apps Script (envía directo a contacto@hocplanner.cl, sin Netlify Forms)
+    // Contacto → Web App de Apps Script
     var FORM_URL='https://script.google.com/macros/s/AKfycbwf3tezcwQ9K-vlQ63a0767sUbS7FF0Ju1miIrGhBLU7Q0jPUR87hQ4AS8bp3F03aDBCw/exec';
     var f=document.getElementById('cform');
     f.addEventListener('submit',function(e){
