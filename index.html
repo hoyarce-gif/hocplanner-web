@@ -42,7 +42,7 @@
           <a href="#hero" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Inicio</a>
           <a href="#products" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Servicios</a>
           <a href="#contact" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Contacto</a>
-          <a href="#contact" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Asesoría</a>
+          <a href="#consultoria" class="text-gray-600 hover:text-brand-700 text-sm font-medium transition-colors">Asesoría</a>
           <a href="https://hocplannerapp.netlify.app" target="_blank" rel="noopener" class="bg-brand-700 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-800 transition-all shadow-sm">Acceso clientes</a>
         </div>
         <button id="mbtn" class="md:hidden p-2 text-gray-600" aria-label="Menú">
@@ -53,6 +53,7 @@
     <div id="mmenu" class="md:hidden hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1">
       <a href="#hero" class="block py-4 text-xl font-bold text-gray-900 border-b border-gray-100">Inicio</a>
       <a href="#products" class="block py-4 text-xl font-bold text-gray-900 border-b border-gray-100">Servicios</a>
+      <a href="#consultoria" class="block py-4 text-xl font-bold text-gray-900 border-b border-gray-100">Asesoría</a>
       <a href="#contact" class="block py-4 text-xl font-bold text-gray-900 border-b border-gray-100">Contacto</a>
       <a href="https://hocplannerapp.netlify.app" target="_blank" rel="noopener" class="mt-4 block text-center py-4 text-lg font-semibold text-white bg-brand-700 rounded-full">Acceso clientes</a>
     </div>
@@ -444,6 +445,131 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════════════
+       CONSULTORÍA POR HORA — Booking widget
+       ═══════════════════════════════════════════════════ -->
+  <section id="consultoria" class="py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#d08c12">Consultoría</p>
+        <h2 class="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight leading-tight">Asesoría por hora</h2>
+        <p class="mt-4 text-lg text-gray-500 font-light">Sesión individual · 1 hora · Lun–Vie 9–13 y 15–18 hrs</p>
+      </div>
+
+      <!-- Step indicator -->
+      <div id="book-steps" class="flex items-center justify-center gap-2 mb-10">
+        <div class="step-dot flex items-center gap-2" data-step="1">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-gray-900 text-white step-num">1</div>
+          <span class="text-sm font-medium text-gray-900 hidden sm:inline">Elige un día</span>
+        </div>
+        <div class="w-8 h-px bg-gray-200"></div>
+        <div class="step-dot flex items-center gap-2" data-step="2">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-gray-200 text-gray-500 step-num">2</div>
+          <span class="text-sm font-medium text-gray-400 hidden sm:inline">Elige un horario</span>
+        </div>
+        <div class="w-8 h-px bg-gray-200"></div>
+        <div class="step-dot flex items-center gap-2" data-step="3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-gray-200 text-gray-500 step-num">3</div>
+          <span class="text-sm font-medium text-gray-400 hidden sm:inline">Tus datos</span>
+        </div>
+      </div>
+
+      <!-- Widget card -->
+      <div class="bg-gray-50 rounded-3xl p-8 lg:p-12 min-h-72">
+
+        <!-- ── STEP 1: Calendar ── -->
+        <div id="book-s1">
+          <div class="flex items-center justify-between mb-6">
+            <button id="cal-prev" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors text-gray-600" aria-label="Mes anterior">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <h3 id="cal-title" class="text-base font-semibold text-gray-900"></h3>
+            <button id="cal-next" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors text-gray-600" aria-label="Mes siguiente">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <!-- Day-of-week headers -->
+          <div class="grid grid-cols-7 gap-1 mb-2">
+            <div class="text-center text-xs font-medium text-gray-400 py-1">Lun</div>
+            <div class="text-center text-xs font-medium text-gray-400 py-1">Mar</div>
+            <div class="text-center text-xs font-medium text-gray-400 py-1">Mié</div>
+            <div class="text-center text-xs font-medium text-gray-400 py-1">Jue</div>
+            <div class="text-center text-xs font-medium text-gray-400 py-1">Vie</div>
+            <div class="text-center text-xs font-medium text-gray-400 py-1">Sáb</div>
+            <div class="text-center text-xs font-medium text-gray-400 py-1">Dom</div>
+          </div>
+          <div id="cal-grid" class="grid grid-cols-7 gap-1"></div>
+        </div>
+
+        <!-- ── STEP 2: Slots ── -->
+        <div id="book-s2" class="hidden">
+          <div class="flex items-center gap-3 mb-6">
+            <button id="slots-back" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors text-gray-600">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <h3 id="slots-title" class="text-base font-semibold text-gray-900"></h3>
+          </div>
+          <div id="slots-loading" class="flex items-center gap-3 text-gray-400">
+            <svg class="animate-spin" width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="50" stroke-linecap="round"/></svg>
+            <span class="text-sm">Verificando disponibilidad…</span>
+          </div>
+          <div id="slots-grid" class="hidden grid grid-cols-3 sm:grid-cols-4 gap-3"></div>
+          <div id="slots-empty" class="hidden text-center py-8 text-gray-400 text-sm">No hay horarios disponibles para este día. Intenta con otra fecha.</div>
+        </div>
+
+        <!-- ── STEP 3: Form ── -->
+        <div id="book-s3" class="hidden">
+          <div class="flex items-center gap-3 mb-6">
+            <button id="form-back" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors text-gray-600">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <h3 id="form-title" class="text-base font-semibold text-gray-900"></h3>
+          </div>
+          <form id="book-form" class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Nombre completo *</label>
+                <input id="bf-name" type="text" required placeholder="Tu nombre" class="block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-gray-900 text-sm">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Email *</label>
+                <input id="bf-email" type="email" required placeholder="nombre@empresa.com" class="block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-gray-900 text-sm">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1.5">¿Sobre qué tema quieres asesorarte?</label>
+              <textarea id="bf-topic" rows="3" placeholder="Describe brevemente el tema o proyecto que necesitas revisar…" class="block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-gray-900 text-sm resize-none"></textarea>
+            </div>
+            <!-- Summary + CTA -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Total a pagar</p>
+                <p class="text-2xl font-bold text-gray-900" id="book-price">$50.000 CLP</p>
+                <p class="text-xs text-gray-400 mt-0.5">1 hora · Lun–Vie · Ambiente de prueba</p>
+              </div>
+              <button type="submit" id="book-submit" class="shrink-0 px-8 py-3.5 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-brand-900 transition-all flex items-center gap-2">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                Reservar y Pagar
+              </button>
+            </div>
+            <div id="book-error" class="hidden text-sm text-red-600 text-center"></div>
+          </form>
+        </div>
+
+        <!-- ── Redirecting to Webpay ── -->
+        <div id="book-redirecting" class="hidden flex-col items-center justify-center py-12 text-center">
+          <svg class="animate-spin mb-4" width="40" height="40" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#d08c12" stroke-width="3" stroke-dasharray="50" stroke-linecap="round"/></svg>
+          <p class="text-gray-700 font-medium">Redirigiendo a Webpay…</p>
+          <p class="text-sm text-gray-400 mt-1">Serás redirigido al portal de pago seguro.</p>
+        </div>
+
+      </div><!-- /widget card -->
+
+    </div><!-- /container -->
+  </section>
+
   <!-- CONTACTO -->
   <section id="contact" class="bg-gray-50 py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -507,6 +633,249 @@
     document.getElementById('mbtn').onclick=function(){ mm.classList.toggle('hidden'); };
     mm.querySelectorAll('a').forEach(function(a){ a.onclick=function(){ mm.classList.add('hidden'); }; });
     document.getElementById('yr').textContent=new Date().getFullYear();
+
+    // ══════════════════════════════════════════════════════════════
+    // BOOKING WIDGET
+    // ══════════════════════════════════════════════════════════════
+    (function () {
+      var PRICE_CLP = 50000;
+      var MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      var DAYS_ES   = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
+      // State
+      var state = { step: 1, year: 0, month: 0, selectedDate: '', selectedSlot: '' };
+      var today = new Date(); today.setHours(0,0,0,0);
+
+      // Init calendar to current month
+      state.year  = today.getFullYear();
+      state.month = today.getMonth(); // 0-indexed
+
+      // ── DOM refs ──
+      var s1 = document.getElementById('book-s1');
+      var s2 = document.getElementById('book-s2');
+      var s3 = document.getElementById('book-s3');
+      var sR = document.getElementById('book-redirecting');
+
+      function showStep(n) {
+        s1.classList.toggle('hidden', n !== 1);
+        s2.classList.toggle('hidden', n !== 2);
+        s3.classList.toggle('hidden', n !== 3);
+        sR.classList.toggle('hidden', n !== 4);
+        sR.classList.toggle('flex', n === 4);
+        // Update step indicators
+        document.querySelectorAll('.step-dot').forEach(function(dot) {
+          var ds = parseInt(dot.dataset.step);
+          var numEl = dot.querySelector('.step-num');
+          var lblEl = dot.querySelector('span');
+          if (ds < n) {
+            numEl.className = 'w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-green-600 text-white step-num';
+            numEl.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+          } else if (ds === n) {
+            numEl.className = 'w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-gray-900 text-white step-num';
+            numEl.textContent = ds;
+          } else {
+            numEl.className = 'w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-gray-200 text-gray-500 step-num';
+            numEl.textContent = ds;
+          }
+          if (lblEl) {
+            lblEl.className = 'text-sm font-medium hidden sm:inline ' + (ds <= n ? 'text-gray-900' : 'text-gray-400');
+          }
+        });
+        state.step = n;
+      }
+
+      // ── Calendar rendering ──
+      function renderCalendar() {
+        var title = document.getElementById('cal-title');
+        var grid  = document.getElementById('cal-grid');
+        title.textContent = MONTHS_ES[state.month] + ' ' + state.year;
+        grid.innerHTML = '';
+
+        var firstDay = new Date(state.year, state.month, 1);
+        // Offset: Mon=0 … Sun=6 (we render Mon-first)
+        var startOffset = (firstDay.getDay() + 6) % 7; // convert Sun=0 to Mon=0
+
+        var daysInMonth = new Date(state.year, state.month + 1, 0).getDate();
+        var todayStr = fmtDate(today);
+
+        // Empty cells before first day
+        for (var i = 0; i < startOffset; i++) {
+          var blank = document.createElement('div');
+          grid.appendChild(blank);
+        }
+
+        for (var d = 1; d <= daysInMonth; d++) {
+          var date = new Date(state.year, state.month, d);
+          var dateStr = fmtDate(date);
+          var dow = date.getDay(); // 0=Sun … 6=Sat
+          var isWeekend = (dow === 0 || dow === 6);
+          var isPast    = date < today;
+          var isToday   = dateStr === todayStr;
+          var isSelected = dateStr === state.selectedDate;
+
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = d;
+          btn.setAttribute('data-date', dateStr);
+
+          if (isSelected) {
+            btn.className = 'aspect-square rounded-xl text-sm font-semibold bg-gray-900 text-white transition-colors';
+          } else if (isPast || isWeekend) {
+            btn.className = 'aspect-square rounded-xl text-sm text-gray-300 cursor-not-allowed';
+            btn.disabled = true;
+          } else if (isToday) {
+            btn.className = 'aspect-square rounded-xl text-sm font-semibold text-gray-900 bg-amber-50 ring-2 ring-amber-300 hover:bg-gray-900 hover:text-white hover:ring-gray-900 transition-colors cursor-pointer';
+          } else {
+            btn.className = 'aspect-square rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-900 hover:text-white transition-colors cursor-pointer';
+          }
+
+          btn.addEventListener('click', function(e) {
+            var d2 = e.currentTarget.dataset.date;
+            state.selectedDate = d2;
+            renderCalendar(); // re-render to show selection
+            loadSlots(d2);
+          });
+
+          grid.appendChild(btn);
+        }
+      }
+
+      function fmtDate(d) {
+        return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+      }
+
+      document.getElementById('cal-prev').addEventListener('click', function() {
+        state.month--;
+        if (state.month < 0) { state.month = 11; state.year--; }
+        renderCalendar();
+      });
+      document.getElementById('cal-next').addEventListener('click', function() {
+        state.month++;
+        if (state.month > 11) { state.month = 0; state.year++; }
+        renderCalendar();
+      });
+
+      // ── Load and display slots ──
+      function loadSlots(dateStr) {
+        showStep(2);
+        var d = new Date(dateStr + 'T12:00:00');
+        document.getElementById('slots-title').textContent =
+          DAYS_ES[d.getDay()] + ', ' + d.getDate() + ' de ' + MONTHS_ES[d.getMonth()];
+
+        var loading = document.getElementById('slots-loading');
+        var grid    = document.getElementById('slots-grid');
+        var empty   = document.getElementById('slots-empty');
+        loading.classList.remove('hidden');
+        grid.classList.add('hidden');
+        empty.classList.add('hidden');
+
+        fetch('/api/availability?date=' + dateStr)
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            loading.classList.add('hidden');
+            if (!data.slots || data.slots.length === 0) {
+              empty.classList.remove('hidden');
+              return;
+            }
+            grid.innerHTML = '';
+            data.slots.forEach(function(slot) {
+              var btn = document.createElement('button');
+              btn.type = 'button';
+              btn.textContent = slot + ' hrs';
+              btn.className = 'py-3 px-4 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors';
+              btn.addEventListener('click', function() {
+                state.selectedSlot = slot;
+                showFormStep();
+              });
+              grid.appendChild(btn);
+            });
+            grid.classList.remove('hidden');
+          })
+          .catch(function() {
+            loading.classList.add('hidden');
+            // Fallback: show default working hours
+            var defaultSlots = ['09:00','10:00','11:00','12:00','15:00','16:00','17:00'];
+            grid.innerHTML = '';
+            defaultSlots.forEach(function(slot) {
+              var btn = document.createElement('button');
+              btn.type = 'button';
+              btn.textContent = slot + ' hrs';
+              btn.className = 'py-3 px-4 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors';
+              btn.addEventListener('click', function() {
+                state.selectedSlot = slot;
+                showFormStep();
+              });
+              grid.appendChild(btn);
+            });
+            grid.classList.remove('hidden');
+          });
+      }
+
+      document.getElementById('slots-back').addEventListener('click', function() {
+        showStep(1);
+      });
+
+      // ── Form step ──
+      function showFormStep() {
+        var d = new Date(state.selectedDate + 'T12:00:00');
+        document.getElementById('form-title').textContent =
+          DAYS_ES[d.getDay()] + ', ' + d.getDate() + ' de ' + MONTHS_ES[d.getMonth()] + ' · ' + state.selectedSlot + ' hrs';
+        document.getElementById('book-price').textContent =
+          '$' + PRICE_CLP.toLocaleString('es-CL') + ' CLP';
+        showStep(3);
+      }
+
+      document.getElementById('form-back').addEventListener('click', function() {
+        showStep(2);
+        loadSlots(state.selectedDate);
+      });
+
+      // ── Form submit → Webpay ──
+      document.getElementById('book-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name  = document.getElementById('bf-name').value.trim();
+        var email = document.getElementById('bf-email').value.trim();
+        var topic = document.getElementById('bf-topic').value.trim();
+        var errEl = document.getElementById('book-error');
+        errEl.classList.add('hidden');
+
+        if (!name || !email) {
+          errEl.textContent = 'Por favor completa tu nombre y email.';
+          errEl.classList.remove('hidden');
+          return;
+        }
+
+        var submitBtn = document.getElementById('book-submit');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Procesando…';
+        showStep(4);
+
+        fetch('/api/book', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ date: state.selectedDate, slot: state.selectedSlot, name: name, email: email, topic: topic })
+        })
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            if (data.redirectUrl) {
+              window.location.href = data.redirectUrl;
+            } else {
+              throw new Error(data.error || 'Error desconocido');
+            }
+          })
+          .catch(function(err) {
+            showStep(3);
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Reservar y Pagar';
+            errEl.textContent = 'Error al iniciar el pago. Por favor intenta nuevamente.';
+            errEl.classList.remove('hidden');
+          });
+      });
+
+      // Init
+      renderCalendar();
+      showStep(1);
+    })();
 
     // Contacto → Web App de Apps Script
     var FORM_URL='https://script.google.com/macros/s/AKfycbwf3tezcwQ9K-vlQ63a0767sUbS7FF0Ju1miIrGhBLU7Q0jPUR87hQ4AS8bp3F03aDBCw/exec';

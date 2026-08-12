@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmación de Reserva — Hocplanner</title>
+  <link rel="icon" href="https://hocplannerapp.netlify.app/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['Inter','-apple-system','BlinkMacSystemFont','sans-serif'] },
+      colors: {
+        brand: { 700: '#334E68', 800: '#243B53', 900: '#102A43' }
+      }
+    }}}
+  </script>
+  <style>
+    body { font-family: Inter, sans-serif; }
+    @keyframes scaleIn { from { transform:scale(.7); opacity:0 } to { transform:scale(1); opacity:1 } }
+    .icon-bounce { animation: scaleIn .5s cubic-bezier(.34,1.56,.64,1) both }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4 py-16">
+
+  <!-- Nav minimal -->
+  <a href="/" class="absolute top-6 left-6 flex items-center gap-2">
+    <img src="https://hocplannerapp.netlify.app/logo.png" class="h-8 w-8 object-contain" alt="Hocplanner">
+    <span class="text-lg font-bold text-gray-900">Hoc<span style="color:#d08c12">planner</span></span>
+  </a>
+
+  <div id="card" class="max-w-md w-full bg-white rounded-3xl shadow-xl p-10 text-center">
+    <!-- Content injected by JS -->
+  </div>
+
+  <script>
+    var p = new URLSearchParams(location.search)
+    var status = p.get('status') || 'error'
+    var card = document.getElementById('card')
+
+    var MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
+    var DAYS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']
+
+    function formatDate(dateStr) {
+      if (!dateStr) return ''
+      var parts = dateStr.split('-')
+      var d = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]))
+      return DAYS[d.getDay()] + ' ' + d.getDate() + ' de ' + MONTHS[d.getMonth()] + ' de ' + parts[0]
+    }
+
+    function formatAmount(amt) {
+      if (!amt) return ''
+      return '$' + parseInt(amt).toLocaleString('es-CL') + ' CLP'
+    }
+
+    if (status === 'ok') {
+      var date  = p.get('date')
+      var slot  = p.get('slot')
+      var name  = p.get('name')
+      var amount = p.get('amount')
+      var order = p.get('order')
+
+      card.innerHTML = [
+        '<div class="icon-bounce w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">',
+        '  <svg width="40" height="40" fill="none" stroke="#16a34a" stroke-width="2.5" viewBox="0 0 24 24">',
+        '    <path d="M20 6 9 17l-5-5"/>',
+        '  </svg>',
+        '</div>',
+        '<h1 class="text-2xl font-bold text-gray-900 mb-2">¡Reserva confirmada!</h1>',
+        '<p class="text-gray-500 mb-8">Te esperamos en tu sesión de consultoría.</p>',
+        '<div class="bg-gray-50 rounded-2xl p-6 text-left space-y-3 mb-8">',
+        name   ? '<div class="flex justify-between"><span class="text-sm text-gray-500">Nombre</span><span class="text-sm font-medium text-gray-900">' + name + '</span></div>' : '',
+        date   ? '<div class="flex justify-between"><span class="text-sm text-gray-500">Fecha</span><span class="text-sm font-medium text-gray-900">' + formatDate(date) + '</span></div>' : '',
+        slot   ? '<div class="flex justify-between"><span class="text-sm text-gray-500">Horario</span><span class="text-sm font-medium text-gray-900">' + slot + ' hrs (1 hora)</span></div>' : '',
+        amount ? '<div class="flex justify-between"><span class="text-sm text-gray-500">Monto</span><span class="text-sm font-medium text-gray-900">' + formatAmount(amount) + '</span></div>' : '',
+        order  ? '<div class="flex justify-between"><span class="text-sm text-gray-500">Orden</span><span class="text-sm font-mono text-gray-500 text-xs">' + order + '</span></div>' : '',
+        '</div>',
+        '<p class="text-xs text-gray-400 mb-6">Recibirás una invitación de calendario en tu email. Si no la encuentras, escríbenos a <strong>contacto@hocplanner.cl</strong>.</p>',
+        '<a href="/" class="inline-block px-8 py-3 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-brand-800 transition-colors">Volver al inicio</a>',
+      ].join('')
+
+    } else if (status === 'cancelled') {
+      card.innerHTML = [
+        '<div class="icon-bounce w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">',
+        '  <svg width="40" height="40" fill="none" stroke="#d97706" stroke-width="2.5" viewBox="0 0 24 24">',
+        '    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r="0.5" fill="#d97706"/>',
+        '  </svg>',
+        '</div>',
+        '<h1 class="text-2xl font-bold text-gray-900 mb-2">Pago cancelado</h1>',
+        '<p class="text-gray-500 mb-8">No se realizó ningún cargo. Puedes intentarlo nuevamente cuando quieras.</p>',
+        '<a href="/#consultoria" class="inline-block px-8 py-3 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-brand-800 transition-colors">Intentar nuevamente</a>',
+      ].join('')
+
+    } else {
+      card.innerHTML = [
+        '<div class="icon-bounce w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">',
+        '  <svg width="40" height="40" fill="none" stroke="#dc2626" stroke-width="2.5" viewBox="0 0 24 24">',
+        '    <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>',
+        '  </svg>',
+        '</div>',
+        '<h1 class="text-2xl font-bold text-gray-900 mb-2">Error en el pago</h1>',
+        '<p class="text-gray-500 mb-8">No se pudo procesar el pago. No se realizó ningún cargo. Por favor intenta nuevamente o contáctanos.</p>',
+        '<div class="flex flex-col sm:flex-row gap-3 justify-center">',
+        '  <a href="/#consultoria" class="px-8 py-3 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-brand-800 transition-colors">Intentar nuevamente</a>',
+        '  <a href="/#contact" class="px-8 py-3 rounded-xl border border-gray-200 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors">Contactar</a>',
+        '</div>',
+      ].join('')
+    }
+  </script>
+</body>
+</html>

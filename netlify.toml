@@ -1,7 +1,11 @@
-# Web pública HOC Planner — sitio estático (sin build)
 [build]
-  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Expose functions under /api/* for cleaner URLs
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
   status = 200

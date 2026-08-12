@@ -1,0 +1,8 @@
+{
+  "name": "hocplanner-web",
+  "version": "1.0.0",
+  "description": "Hocplanner public site with booking functions",
+  "dependencies": {
+    "@netlify/blobs": "^8.0.0"
+  }
+}
