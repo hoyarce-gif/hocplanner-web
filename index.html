@@ -839,8 +839,6 @@
         var d = new Date(state.selectedDate + 'T12:00:00');
         document.getElementById('form-title').textContent =
           DAYS_ES[d.getDay()] + ', ' + d.getDate() + ' de ' + MONTHS_ES[d.getMonth()] + ' · ' + state.selectedSlot + ' hrs';
-        document.getElementById('book-price').textContent =
-          '$' + PRICE_CLP.toLocaleString('es-CL') + ' CLP';
         showStep(3);
       }
 
